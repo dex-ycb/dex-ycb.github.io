@@ -1,1 +1,265 @@
-Hello World
+<!DOCTYPE html>
+<html>
+<head>
+<title>DexYCB: A Benchmark for Capturing Hand Grasping of Objects</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+h2 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+h3 {
+  margin-bottom: 1rem;
+}
+h4 {
+  margin-bottom: 1rem;
+}
+video {
+  width: 100%;
+  height: 100%;
+}
+code {
+  background-color: #f5f5f5;
+  display: block;
+  padding: 20px;
+  white-space: pre-wrap;
+}
+.container {
+  padding: 40px 15px;
+}
+.center {
+  text-align: center;
+}
+.underline {
+  text-decoration: underline;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.authors {
+  line-height: 2;
+  font-size: 18px;
+}
+.section {
+  padding: 10px 0 30px;
+}
+.content {
+  padding: 10px 0;
+}
+.video {
+  padding: 20px 0 20px;
+}
+.image{
+  padding: 0 30px;
+}
+.embedded-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+.embedded-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="content">
+        <h2 class="center content">DexYCB: A Benchmark for Capturing Hand Grasping of Objects</h2>
+        <div class="center content authors">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">
+            <span class="nowrap">Yu-Wei Chao<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://wyang.me" target="_blank">
+            <span class="nowrap">Wei Yang<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://yuxng.github.io" target="_blank">
+            <span class="nowrap">Yu Xiang<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/pavlo-molchanov" target="_blank">
+            <span class="nowrap">Pavlo Molchanov<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://ankurhanda.github.io" target="_blank">
+            <span class="nowrap">Ankur Handa<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/jonathan-tremblay" target="_blank">
+            <span class="nowrap">Jonathan Tremblay<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/yashraj-narang" target="_blank">
+            <span class="nowrap">Yashraj S. Narang<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/karl-van-wyk" target="_blank">
+            <span class="nowrap">Karl Van Wyk<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.umariqbal.info" target="_blank">
+            <span class="nowrap">Umar Iqbal<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/stan-birchfield" target="_blank">
+            <span class="nowrap">Stan Birchfield<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://jankautz.com" target="_blank">
+            <span class="nowrap">Jan Kautz<sup>1</sup></span>
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://research.nvidia.com/person/dieter-fox" target="_blank">
+            <span class="nowrap">Dieter Fox<sup>1,2</sup></span>
+          </a>
+        </div>
+        <div class="center content authors">
+          <span><sup>1</sup>NVIDIA, <sup>2</sup>University of Washington</span>
+        </div>
+        <div class="center authors">
+          <span>IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2021</span>
+        </div>
+      </div>
+
+      <div class="video">
+        <video autoplay="autoplay" muted="muted" loop="loop">
+          <source src="assets/dex-ycb-render.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="section">
+        <h3>Abstract</h3>
+        <p>We introduce DexYCB, a new dataset for capturing hand grasping of objects. We first compare DexYCB with a related one through cross-dataset evaluation. We then present a thorough benchmark of state-of-the-art approaches on three relevant tasks: 2D object and keypoint detection, 6D object pose estimation, and 3D hand pose estimation. Finally, we evaluate a new robotics-relevant task: generating safe robot grasps in human-to-robot object handover.</p>
+      </div>
+
+      <div class="section">
+        <h3>Paper</h3>
+        <div class="row content">
+          <div class="center image">
+            <a href="./assets/chao_cvpr2021.pdf" target="_blank">
+              <img src="./assets/pdf.png" height="176px" width="136px">
+              <br>
+              <span class="icon"> <i class="fas fa-file-pdf"></i> </span>
+              <span>PDF</span>
+            </a>
+          </div>
+          <div class="center image">
+            <a href="./assets/chao_cvpr2021_supp.pdf" target="_blank">
+              <img src="./assets/supplementary.png" height="176px" width="136px">
+              <br>
+              <span class="icon"> <i class="fas fa-file-pdf"></i> </span>
+              <span>Supplementary</span>
+            </a>
+          </div>
+          <div class="center image">
+            <a href="" target="_blank">
+              <img height="176px" width="136px">
+              <br>
+              <span class="icon"> <i class="fas fa-file-pdf"></i> </span>
+              <span>arXiv</span>
+            </a>
+          </div>
+        </div>
+        <br>
+        <div class="content">
+          <h4>Citing DexYCB</h4>
+          <p>Please cite DexYCB if it helps your research:</p>
+          <pre><code>@INPROCEEDINGS{chao:cvpr2021,
+  author    = {Yu-Wei Chao and Wei Yang and Yu Xiang and Pavlo Molchanov and Ankur Handa and Jonathan Tremblay and Yashraj S. Narang and Karl {Van Wyk} and Umar Iqbal and Stan Birchfield and Jan Kautz and Dieter Fox},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title     = {{DexYCB}: A Benchmark for Capturing Hand Grasping of Objects},
+  year      = {2021},
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Data</h3>
+        <p>DexYCB is licensed under <span class="underline"><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span>.</p>
+        <p>We provide two options for downloading the dataset:</p>
+        <ol>
+          <li>
+            <p>A single compressed file that contains everything:<a href="https://drive.google.com/file/d/1mU3WN0HpBD71Wny6CfRWaGA2M_YMiG1c" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>dex-ycb-20201205.tar.gz</a> (119G). Download this file to a new folder and extract it with:</p>
+            <pre><code>tar zxvf dex-ycb-20201205.tar.gz</code></pre>
+          </li>
+          <li>
+            <p>A breakdown to multiple compressed files, each containing a sub-folder. Download all the files below to a new folder and extract them individually:</p>
+            <ul>
+              <li><a href="https://drive.google.com/file/d/1W9epnHupIzPPripLBf1aJPbzRFAT1Tqe" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200709-weiy.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1Ncsz_cbEzbEjQIDjgeP7ibwehy5GsP0V" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200813-ceppner.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1Q2XmylKxDoIBdWVPbNFUhcf9-nzQY63s" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200820-amousavian.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/15F46wIP7eAXchuSytGDhvOVWF8WdkSDc" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200903-ynarang.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1XTdhGe3ai4qMgDU2or8fNLGeRpno-Htq" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200908-yux.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/12BoeeI7hGaq_TwmvK3VzSmi6uikY9Guv" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200918-ftozetoramos.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1b99sCgjOQ9H6HjyDrvbZdLrS960VLUy1" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20200928-ahanda.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1lTaI0QAUY87F3VibrA0Jtgc5I8gXSzvG" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20201002-dieterf.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1E72oocWNcZSWC6nO85eZG18BVAhAmPyf" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20201015-ychao.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1btUT_jO8FAkWx7IXpBQX7O2-4pGspt4U" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>20201022-lmanuelli.tar.gz</a> (12G)</li>
+              <li><a href="https://drive.google.com/file/d/1Mlen4A8_LtbOmoZeVPLMARMvZqkSil_P" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>bop.tar.gz</a> (1.2G)</li>
+              <li><a href="https://drive.google.com/file/d/1wY67z7PD_YkJZ_-GfkeBrOXl3WaSfrrQ" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>calibration.tar.gz</a> (16K)</li>
+              <li><a href="https://drive.google.com/file/d/1DgyNGcSzYa2HJvqAc7E2M2c4Op0h6xcC" target="_blank"><span class="icon"> <i class="fas fa-download"></i> </span>models.tar.gz</a> (1.4G)</li>
+            </ul>
+          </li>
+        </ol>
+        <p>Once you successfully download and extract the dataset, you should have a folder with the following structure:</p>
+        <pre><code>├── 20200709-weiy/
+├── 20200813-ceppner/
+├── ...
+├── calibration/
+└── models/</code></pre>
+        <p>For instructions about using the dataset please see <span><a href="" target="_blank">dex-ycb-toolkit</a></span>.</p>
+      </div>
+
+      <div class="section">
+        <h3>Code</h3>
+        <div class="row content">
+          <div class="center image">
+            <a href="" target="_blank">
+              <img src="./assets/GitHub-Mark/PNG/GitHub-Mark-64px.png">
+            </a>
+          </div>
+          <div>
+            <span><a href="" target="_blank">dex-ycb-toolkit</a></span>
+            <br>
+            <span>A Python package that provides evaluation and visualization tools for the DexYCB dataset.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Video</h3>
+          <div class="embedded-video">
+            <iframe src="https://www.youtube.com/embed/Q4wyBaZeBw0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+      </div>
+
+      <div class="section">
+        <h3>Contact</h3>
+        <p>Send any comments or questions to Yu-Wei Chao: <a href="mailto:ychao@nvidia.com">ychao@nvidia.com</a>.</p>
+      </div>
+
+      <hr>
+      <p>Last updated on 2021/04/08</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
